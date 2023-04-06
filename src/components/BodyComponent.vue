@@ -7,15 +7,20 @@
 
 <script>
 import { Chart } from 'highcharts-vue'
+
+//The component imports the Chart component from highcharts-vue, which is used to display the chart. It also imports data from a data.json file.
+
 import data from "../data.json"
 
 export default {
     name: "Body",
     components: {
         highcharts: Chart
+        //
     },
     methods: {
         groupData(ageRange) {
+            //The groupData method is used to group the people based on their blood groups and return the number of people in each group. The computed properties childrenData, youthData, and elderData use this method to group the people based on their age ranges and return the data for the corresponding age groups.
             const A = ageRange.filter(child => {
                 return child.blood_group == 'A'
             })
@@ -36,6 +41,7 @@ export default {
     data() {
         return {
             bloodData: data,
+            //The chartOptions object contains the configuration options for the Highcharts chart. The series array initially contains three empty data sets, one for each age group.
             chartOptions: {
                 chart: {
                     type: 'column'
