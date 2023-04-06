@@ -1,0 +1,104 @@
+{
+  "people": {
+    "person_1": {
+      "name": "John Smith",
+      "age": 35,
+      "blood_group": "A"
+    },
+    "person_2": {
+      "name": "Jane Doe",
+      "age": 27,
+      "blood_group": "B"
+    },
+    "person_3": {
+      "name": "Michael Johnson",
+      "age": 8,
+      "blood_group": "AB"
+    },
+    "person_4": {
+      "name": "Samantha Lee",
+      "age": 29,
+      "blood_group": "O"
+    },
+    "person_5": {
+      "name": "William Kim",
+      "age": 25,
+      "blood_group": "A"
+    },
+    "person_6": {
+      "name": "Jessica Chen",
+      "age": 30,
+      "blood_group": "B"
+    },
+    "person_7": {
+      "name": "David Brown",
+      "age": 2,
+      "blood_group": "O"
+    },
+    "person_8": {
+      "name": "Maria Rodriguez",
+      "age": 70,
+      "blood_group": "A"
+    },
+    "person_9": {
+      "name": "Peter Nguyen",
+      "age": 31,
+      "blood_group": "B"
+    },
+    "person_10": {
+      "name": "Megan Williams",
+      "age": 68,
+      "blood_group": "AB"
+    },
+    "person_11": {
+      "name": "Daniel Lee",
+      "age": 39,
+      "blood_group": "O"
+    },
+    "person_12": {
+      "name": "Rachel Kim",
+      "age": 26,
+      "blood_group": "A"
+    },
+    "person_13": {
+      "name": "Kevin Johnson",
+      "age": 33,
+      "blood_group": "B"
+    },
+    "person_14": {
+      "name": "Emily Wilson",
+      "age": 72,
+      "blood_group": "O"
+    },
+    "person_15": {
+      "name": "Juan Garcia",
+      "age": 36,
+      "blood_group": "A"
+    },
+    "person_16": {
+      "name": "Jennifer Park",
+      "age": 32,
+      "blood_group": "B"
+    },
+    "person_17": {
+      "name": "Mark Davis",
+      "age": 40,
+      "blood_group": "AB"
+    },
+    "person_18": {
+      "name": "Linda Taylor",
+      "age": 27,
+      "blood_group": "O"
+    },
+    "person_19": {
+      "name": "Alex Nguyen",
+      "age": 34,
+      "blood_group": "A"
+    },
+    "person_20": {
+      "name": "Grace Kim",
+      "age": 29,
+      "blood_group": "B"
+    }
+  }
+}
