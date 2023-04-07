@@ -39,7 +39,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Overview
 
-This is a Vue.js component that displays a bar chart using Highcharts. The chart displays the distribution of people across different blood groups and age ranges. The bars of the chart indicate the number of people in each blood group, with the height of each bar representing the total number of individuals in that group. The bar for each age group is further divided into sub-bars, with each sub-bar representing the number of individuals in that age group and blood group.
+This is a Vue.js app that displays a bar chart using Highcharts. The chart displays the distribution of people across different blood groups and age ranges. The bars of the chart indicate the number of people in each blood group, with the height of each bar representing the total number of individuals in that group. The bar for each age group is further divided into sub-bars, with each sub-bar representing the number of individuals in that age group and blood group.
 
 The component imports the Highcharts Chart component and the PulseLoader component from vue-spinner, which is used to display a loading spinner while the chart is being loaded. 
 
