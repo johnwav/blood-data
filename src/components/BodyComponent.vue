@@ -1,54 +1,59 @@
 <template>
     <div class="wrapper">
-        {{ bloodData.people.person_1.name }}
-        <highcharts :options="chartOptions"></highcharts>
+        <highcharts v-if="loaded" :options="chartOptions"></highcharts>
+        <PulseLoader v-if="!loaded" :color="color" :size="size" :margin="margin"></PulseLoader>
+        <div class="info" v-if="loaded">
+            The bar chart displays the distribution of people across different blood groups and age ranges.
+            <br>
+            <br>
+            The age ranges are :
+            <br>
+            <strong>Children:</strong> less than 15 years.
+            <br>
+            <strong>Youths:</strong> 15years through 65 years.
+            <br>
+            <strong>Elders: </strong> 65years or older
+            <br>
+            <br>
+            The bars of the chart indicate the number of people in each blood group, with the height of each bar
+            representing the total number of individuals in that group. The bar for each age group is further divided into
+            sub-bars, with each sub-bar representing the number of individuals in that age group and blood group.
+        </div>
     </div>
 </template>
 
 <script>
 import { Chart } from 'highcharts-vue'
+import { doc, getDoc } from "firebase/firestore"
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import db from '../firebase/init'
+
 
 //The component imports the Chart component from highcharts-vue, which is used to display the chart. It also imports data from a data.json file.
 
-import data from "../data.json"
 
 export default {
     name: "Body",
     components: {
-        highcharts: Chart
-        //
-    },
-    methods: {
-        groupData(ageRange) {
-            //The groupData method is used to group the people based on their blood groups and return the number of people in each group. The computed properties childrenData, youthData, and elderData use this method to group the people based on their age ranges and return the data for the corresponding age groups.
-            const A = ageRange.filter(child => {
-                return child.blood_group == 'A'
-            })
-
-            const B = ageRange.filter(child => {
-                return child.blood_group == 'B'
-            })
-
-            const AB = ageRange.filter(child => {
-                return child.blood_group == 'AB'
-            })
-            const O = ageRange.filter(child => {
-                return child.blood_group == 'O'
-            })
-            return [A.length, B.length, AB.length, O.length]
-        }
+        highcharts: Chart,
+        PulseLoader
     },
     data() {
         return {
-            bloodData: data,
+            color: '#FF6866',
+            size: '50px',
+            margin: '100px',
+            bloodData: {},
+            bd: {},
+            loaded: false,
             //The chartOptions object contains the configuration options for the Highcharts chart. The series array initially contains three empty data sets, one for each age group.
             chartOptions: {
                 chart: {
-                    type: 'column'
+                    type: 'bar'
                 },
                 title: {
-                    text: 'Bar Chart',
-                    align: 'center'
+                    text: null,
+                    // align: 'center'
                 },
 
                 xAxis: {
@@ -83,8 +88,8 @@ export default {
                     layout: 'vertical',
                     align: 'right',
                     verticalAlign: 'top',
-                    x: -40,
-                    y: 80,
+                    x: -10,
+                    y: 200,
                     floating: true,
                     borderWidth: 1,
                     shadow: true
@@ -107,35 +112,99 @@ export default {
 
         }
     },
+    created() {
+
+        const bloodData = localStorage.getItem('bloodData');
+        if (bloodData) {
+            this.bloodData = JSON.parse(bloodData);
+            this.loaded = true;
+        } else {
+            // Retrieve the data from Firestore and store it in local storage
+            getDoc(doc(db, 'people', 'KIddlUaVfJu2BtvXdSAV'))
+                .then(docSnap => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        this.bloodData = data;
+                        this.loaded = true;
+                        localStorage.setItem('bloodData', JSON.stringify(data));
+                        console.log(bloodData)
+                    } else {
+                        console.log('Document does not exist')
+                    }
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        }
+
+    },
+
+    methods: {
+        groupData(ageRange) {
+            //The groupData method is used to group the people based on their blood groups and return the number of people in each group. The computed properties childrenData, youthData, and elderData use this method to group the people based on their age ranges and return the data for the corresponding age groups.
+            const A = ageRange.filter(child => {
+                return child.blood_group == 'A'
+            })
+
+            const B = ageRange.filter(child => {
+                return child.blood_group == 'B'
+            })
+
+            const AB = ageRange.filter(child => {
+                return child.blood_group == 'AB'
+            })
+            const O = ageRange.filter(child => {
+                return child.blood_group == 'O'
+            })
+            return [A.length, B.length, AB.length, O.length]
+        }
+    },
     computed: {
         childrenData() {
-            const children = Object.values(this.bloodData?.people).filter(child => child.age < 15)
-            return this.groupData(children)
+            if (this.bloodData.people != null) {
+                const children = Object.values(this.bloodData?.people).filter(child => child.age < 15)
+                return this.groupData(children)
+            }
+
         },
         youthData() {
-            const youths = Object.values(this.bloodData?.people).filter(youth => youth.age > 15 && youth.age < 65)
-            return this.groupData(youths)
+            if (this.bloodData.people != null) {
+                const youths = Object.values(this.bloodData?.people).filter(youth => youth.age > 15 && youth.age < 65)
+                return this.groupData(youths)
+            }
         },
         elderData() {
-            const elders = Object.values(this.bloodData?.people).filter(elder => elder.age > 65)
-            return this.groupData(elders)
+            if (this.bloodData.people != null) {
+                const elders = Object.values(this.bloodData?.people).filter(elder => elder.age > 65)
+                return this.groupData(elders)
+            }
         }
     },
     watch: {
         childrenData(newValue) {
-            this.chartOptions.series[0].data = newValue;
+            if (this.loaded) {
+                this.chartOptions.series[0].data = newValue;
+            }
         },
         youthData(newValue) {
-            this.chartOptions.series[1].data = newValue;
+            if (this.loaded) {
+                this.chartOptions.series[1].data = newValue;
+            }
         },
         elderData(newValue) {
-            this.chartOptions.series[2].data = newValue;
-        }
+            if (this.loaded) {
+                this.chartOptions.series[2].data = newValue;
+            }
+        },
+
     },
     mounted() {
-        this.chartOptions.series[0].data = this.childrenData;
-        this.chartOptions.series[1].data = this.youthData;
-        this.chartOptions.series[2].data = this.elderData;
+        if (this.loaded) {
+            this.chartOptions.series[0].data = this.childrenData;
+            this.chartOptions.series[1].data = this.youthData;
+            this.chartOptions.series[2].data = this.elderData;
+        }
+
     }
 }
 </script>
