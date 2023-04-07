@@ -41,7 +41,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 This is a Vue.js component that displays a bar chart using Highcharts. The chart displays the distribution of people across different blood groups and age ranges. The bars of the chart indicate the number of people in each blood group, with the height of each bar representing the total number of individuals in that group. The bar for each age group is further divided into sub-bars, with each sub-bar representing the number of individuals in that age group and blood group.
 
-The component imports the Highcharts Chart component and the PulseLoader component from vue-spinner, which is used to display a loading spinner while the chart is being loaded. The data for the chart is imported from a data.json file.
+The component imports the Highcharts Chart component and the PulseLoader component from vue-spinner, which is used to display a loading spinner while the chart is being loaded. 
 
 The component contains a chartOptions object that contains the configuration options for the Highcharts chart. The series array initially contains three empty data sets, one for each age group. The computed properties childrenData, youthData, and elderData are used to group the people based on their age ranges and return the data for the corresponding age groups.
 
@@ -74,11 +74,10 @@ The app should work well offline using local storage or index db to achieve this
 - VueJS
 - [Firebase](https://firebase.google.com/) - Database
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### Example Process
 
-To save time, the data for the patients was created using OpenAI's - [ChatGPT](https://chat.openai.com/) - ChatGPT as seen below
+To save time, the data for the patients was created using OpenAI's - [ChatGPT](https://chat.openai.com/) as seen below
 
 ![](./datashot.png)
 
@@ -87,6 +86,7 @@ This data was stored in a json file and was used to build the application static
 The setDoc method was used easily push the data to the data base, rather than inputting it manually
 
 
+**Note: These are just examples. **
 
 see example below:
 
