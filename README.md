@@ -78,7 +78,7 @@ The app should work well offline using local storage or index db to achieve this
 
 ### Example Process
 
-To save time, the data for the patients was created using OpenAI's - [ChatGPT](https://chat.openai.com/) - ChatGPT as seen below
+To save time, the data for the patients was created using OpenAI's - [ChatGPT](https://chat.openai.com/) as seen below
 
 ![](./datashot.png)
 
