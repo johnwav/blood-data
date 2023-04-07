@@ -41,9 +41,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 This is a Vue.js app that displays a bar chart using Highcharts. The chart displays the distribution of people across different blood groups and age ranges. The bars of the chart indicate the number of people in each blood group, with the height of each bar representing the total number of individuals in that group. The bar for each age group is further divided into sub-bars, with each sub-bar representing the number of individuals in that age group and blood group.
 
-The component imports the Highcharts Chart component and the PulseLoader component from vue-spinner, which is used to display a loading spinner while the chart is being loaded. 
+The body component imports the Highcharts Chart component and the PulseLoader component from vue-spinner, which is used to display a loading spinner while the chart is being loaded. 
 
-The component contains a chartOptions object that contains the configuration options for the Highcharts chart. The series array initially contains three empty data sets, one for each age group. The computed properties childrenData, youthData, and elderData are used to group the people based on their age ranges and return the data for the corresponding age groups.
+The body component contains a chartOptions object that contains the configuration options for the Highcharts chart. The series array initially contains three empty data sets, one for each age group. The computed properties childrenData, youthData, and elderData are used to group the people based on their age ranges and return the data for the corresponding age groups.
 
 The created hook is used to retrieve the data from Firestore and store it in local storage. If the data is already available in local storage, it is retrieved from there. The loaded data is used to set the value of the loaded data property to true. If the data is not available in local storage, it is retrieved from Firestore, and the loaded data is set to true once the data has been retrieved.
 
