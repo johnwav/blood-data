@@ -8,17 +8,18 @@
             <br>
             The age ranges are :
             <br>
-            <strong>Children:</strong> less than 15 years.
+            <strong>Children:</strong> Less than 15 years.
             <br>
-            <strong>Youths:</strong> 15years through 65 years.
+            <strong>Youths:</strong> 15 years through 65 years.
             <br>
-            <strong>Elders: </strong> 65years or older
+            <strong>Elders: </strong> 65 years or older
             <br>
             <br>
             The bars of the chart indicate the number of people in each blood group, with the height of each bar
             representing the total number of individuals in that group. The bar for each age group is further divided into
             sub-bars, with each sub-bar representing the number of individuals in that age group and blood group.
         </div>
+        <!-- <p class="info" v-if="!loaded">Loading Chart Please Wait....</p> -->
     </div>
 </template>
 

@@ -1,31 +1,22 @@
 /* ITCSS: Settings */
-@import '_root';
-@import '_var.sass';
+@import "_root";
 
 /* ITCSS: Tools */
-@import '_mixins.sass';
 
 /* ITCSS: Resets */
 // @import '../../node_modules/normalize.css/normalize';
 
 /* ITCSS: Fonts */
-@import '_modak.scss';
-@import '_icofont.scss';
 
 /* ITCSS: Base */
-@import '_global.sass';
-@import '_utility.sass';
+@import "_global.sass";
 
 /* ITCSS: Sections */
-@import '_main.sass';
-@import '_footer.sass';
-@import '_cart.sass';
 
 /* ITCSS: Components */
 
-@import '_card.sass';
-@import '_Navbar.sass';
+@import "_body.sass";
+@import "_navbar.sass";
 // @import '_Body.scss';
 
 /* ITCSS: Trumps */
-@import '_mediaqueries.sass';
