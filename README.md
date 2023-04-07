@@ -53,7 +53,7 @@ The groupData method is used to group the people based on their blood groups and
 
 
 
-The app should work well offline using local storage or index db to achieve this.
+
 - Build a Vue app that pulls the data using API calls and visualizes this information using a barchart (from the high-chart library)
 - Populate a fire-base database with Generated sample data for 20 people (name, age, blood group)
 - The app should work well offline using local storage or index db to achieve this.
