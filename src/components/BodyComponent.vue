@@ -28,7 +28,6 @@ import { Chart } from 'highcharts-vue'
 import { doc, getDoc } from "firebase/firestore"
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import db from '../firebase/init'
-import data from '../data.json'
 
 
 //The component imports the Chart component from highcharts-vue, which is used to display the chart. It also imports data from a data.json file.
@@ -45,7 +44,7 @@ export default {
             color: '#FF6866',
             size: '50px',
             margin: '100px',
-            bloodData: data,
+            bloodData: {},
             loaded: false,
             //The chartOptions object contains the configuration options for the Highcharts chart.
             // The series array initially contains three empty data sets, one for each age group.
