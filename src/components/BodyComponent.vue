@@ -19,7 +19,7 @@
             representing the total number of individuals in that group. The bar for each age group is further divided into
             sub-bars, with each sub-bar representing the number of individuals in that age group and blood group.
         </div>
-        <!-- <p class="info" v-if="!loaded">Loading Chart Please Wait....</p> -->
+        <p class="info" v-if="!loaded">Loading Chart Please Wait....</p>
     </div>
 </template>
 
@@ -47,7 +47,8 @@ export default {
             margin: '100px',
             bloodData: data,
             loaded: false,
-            //The chartOptions object contains the configuration options for the Highcharts chart. The series array initially contains three empty data sets, one for each age group.
+            //The chartOptions object contains the configuration options for the Highcharts chart.
+            // The series array initially contains three empty data sets, one for each age group.
             chartOptions: {
                 update: {},
                 chart: {
@@ -55,7 +56,6 @@ export default {
                 },
                 title: {
                     text: null,
-                    // align: 'center'
                 },
 
                 xAxis: {
@@ -133,7 +133,7 @@ export default {
                         this.loaded = true;
                         localStorage.setItem('Data', JSON.stringify(data));
                     } else {
-                        console.log('Document does not exist')
+                        alert('Document does not exist')
                     }
                 })
                 .catch(error => {
@@ -145,7 +145,9 @@ export default {
 
     methods: {
         groupData(ageRange) {
-            //The groupData method is used to group the people based on their blood groups and return the number of people in each group. The computed properties childrenData, youthData, and elderData use this method to group the people based on their age ranges and return the data for the corresponding age groups.
+            //The groupData method is used to group the people based on their blood groups and return the number of people in each group.
+            //The computed properties childrenData, youthData, and elderData use this method to group the people
+            //based on their age ranges and return the data for the corresponding age groups.
             const A = ageRange.filter(child => {
                 return child.blood_group == 'A'
             })
