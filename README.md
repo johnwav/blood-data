@@ -1,4 +1,6 @@
-# blood-data
+# Frontend Vuejs Assignment
+
+This is a solution to the [Frontend Developer Assignment]
 
 ## Project setup
 ```
@@ -23,9 +25,6 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# Frontend Vuejs Assignment
-
-This is a solution to the [Frontend Developer Assignment]
 
 ## Table of contents
 
