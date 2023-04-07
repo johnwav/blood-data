@@ -28,6 +28,7 @@ import { Chart } from 'highcharts-vue'
 import { doc, getDoc } from "firebase/firestore"
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import db from '../firebase/init'
+import data from '../data.json'
 
 
 //The component imports the Chart component from highcharts-vue, which is used to display the chart. It also imports data from a data.json file.
@@ -44,11 +45,11 @@ export default {
             color: '#FF6866',
             size: '50px',
             margin: '100px',
-            bloodData: {},
-            bd: {},
+            bloodData: data,
             loaded: false,
             //The chartOptions object contains the configuration options for the Highcharts chart. The series array initially contains three empty data sets, one for each age group.
             chartOptions: {
+                update: {},
                 chart: {
                     type: 'bar'
                 },
@@ -63,6 +64,7 @@ export default {
                         text: 'Blood Groups'
                     },
                 },
+
                 yAxis: {
                     min: 0,
                     allowDecimals: false,
@@ -113,13 +115,15 @@ export default {
 
         }
     },
-    created() {
-
-        const bloodData = localStorage.getItem('bloodData');
+     async created() {
+        this.loaded = false;
+        const bloodData = await localStorage.getItem('Data');
         if (bloodData) {
+
             this.bloodData = JSON.parse(bloodData);
             this.loaded = true;
         } else {
+
             // Retrieve the data from Firestore and store it in local storage
             getDoc(doc(db, 'people', 'KIddlUaVfJu2BtvXdSAV'))
                 .then(docSnap => {
@@ -127,8 +131,7 @@ export default {
                         const data = docSnap.data();
                         this.bloodData = data;
                         this.loaded = true;
-                        localStorage.setItem('bloodData', JSON.stringify(data));
-                        console.log(bloodData)
+                        localStorage.setItem('Data', JSON.stringify(data));
                     } else {
                         console.log('Document does not exist')
                     }
@@ -205,6 +208,7 @@ export default {
             this.chartOptions.series[1].data = this.youthData;
             this.chartOptions.series[2].data = this.elderData;
         }
+
 
     }
 }
