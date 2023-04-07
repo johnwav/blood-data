@@ -74,7 +74,6 @@ The app should work well offline using local storage or index db to achieve this
 - VueJS
 - [Firebase](https://firebase.google.com/) - Database
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### Example Process
 
@@ -87,6 +86,7 @@ This data was stored in a json file and was used to build the application static
 The setDoc method was used easily push the data to the data base, rather than inputting it manually
 
 
+**Note: These are just examples. **
 
 see example below:
 
