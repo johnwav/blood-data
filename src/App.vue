@@ -1,7 +1,6 @@
 <template>
   <Navbar />
   <Body />
-
 </template>
 
 <script>
@@ -14,7 +13,6 @@ export default {
     Navbar,
     Body,
   },
-
 };
 </script>
 <style>

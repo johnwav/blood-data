@@ -22,17 +22,12 @@
         <p class="info" v-if="!loaded">Loading Chart Please Wait....</p>
     </div>
 </template>
-
 <script>
 import { Chart } from 'highcharts-vue'
 import { doc, getDoc } from "firebase/firestore"
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import db from '../firebase/init'
-
-
 //The component imports the Chart component from highcharts-vue, which is used to display the chart. It also imports data from a data.json file.
-
-
 export default {
     name: "Body",
     components: {
@@ -139,9 +134,7 @@ export default {
                     console.error(error)
                 })
         }
-
     },
-
     methods: {
         groupData(ageRange) {
             //The groupData method is used to group the people based on their blood groups and return the number of people in each group.
@@ -170,7 +163,6 @@ export default {
                 const children = Object.values(this.bloodData?.people).filter(child => child.age < 15)
                 return this.groupData(children)
             }
-
         },
         youthData() {
             if (this.bloodData.people != null) {
@@ -209,8 +201,6 @@ export default {
             this.chartOptions.series[1].data = this.youthData;
             this.chartOptions.series[2].data = this.elderData;
         }
-
-
     }
 }
 </script>
